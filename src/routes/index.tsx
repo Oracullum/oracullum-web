@@ -6,6 +6,7 @@ import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 import Dashboard from '../pages/Dashboard';
 import NewBalance from '../pages/NewBalance';
+import NewAction from '../pages/NewAction';
 
 const Routes: React.FC = () => (
   <BrowserRouter>
@@ -15,6 +16,7 @@ const Routes: React.FC = () => (
       <Route path="/register" component={SignUp} />
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/new-balance" component={NewBalance} />
+      <Route path="/new-action" component={NewAction} />
     </Switch>
   </BrowserRouter>
 );
