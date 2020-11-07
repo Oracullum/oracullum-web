@@ -24,7 +24,7 @@ export default {
     gray: '#808080',
     grayDark: '#707070',
 
-    background: '#FBFBFB',
+    background: '#FD520F',
     text: '#232526',
 
     textInPrimary: '#FD520F',
