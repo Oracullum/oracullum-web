@@ -16,11 +16,11 @@ export default createGlobalStyle`
 
   body {
     -webkit-font-smoothing: antialiased !important;
-    background: ${props => props.theme.colors.background};
+    background: ${props => props.theme.colors.primaryGradient};
   }
 
   body, input, textarea, button {
-    font: 14px Poppins, Archivo, sans-serif;
+    font: 14px Archivo, Poppins, Titillium Web, sans-serif;
   }
 
   a {

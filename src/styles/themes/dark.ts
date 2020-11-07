@@ -19,6 +19,7 @@ export default {
     purple: '#8B56E9',
     yellow: '#FFFF33',
     blue: '#4B75E7',
+    red: '#E0514F',
 
     grayLight: '#909090',
     gray: '#808080',
