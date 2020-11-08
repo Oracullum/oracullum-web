@@ -9,7 +9,7 @@ export default {
     secondaryLight: '#414345',
     secondary: '#232526',
 
-    primaryGradient: 'linear-gradient(90deg, #FF512F 0%, #F09819 100%);',
+    primaryGradient: 'linear-gradient(180deg, #FF512F 0%, #F09819 100%);',
     secondaryGradient: 'linear-gradient(90deg, #232526 0%, #414345 100%);',
 
     white: '#FBFBFB',
@@ -25,7 +25,7 @@ export default {
     gray: '#808080',
     grayDark: '#707070',
 
-    background: '#FD520F',
+    background: '#FBFBFB',
     text: '#232526',
 
     textInPrimary: '#FD520F',

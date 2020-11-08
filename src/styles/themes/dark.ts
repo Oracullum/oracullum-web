@@ -1,16 +1,16 @@
 export default {
   title: 'dark',
   colors: {
-    primaryLighter: '#B6B6F2',
-    primaryLight: '#9595E9',
-    primary: '#8B56E9',
+    primaryLighter: '#AFF579',
+    primaryLight: '#4FF1AE',
+    primary: '#28DF99',
 
-    secondaryLighter: '#AFF579',
-    secondaryLight: '#4FF1AE',
-    secondary: '#28DF99',
+    secondaryLighter: '#B6B6F2',
+    secondaryLight: '#9595E9',
+    secondary: '#8B56E9',
 
-    primaryGradient: 'linear-gradient(90deg, #7475FF 0%, #9595E9 100%);',
-    secondaryGradient: 'linear-gradient(90deg, #2AF39F 0%, #87F8C9 100%);',
+    primaryGradient: 'linear-gradient(180deg, #28DF99 0%, #AFF579 100%);',
+    secondaryGradient: 'linear-gradient(90deg, #7475FF 0%, #9595E9 100%);',
 
     white: '#FBFBFB',
     black: '#232526',
