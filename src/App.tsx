@@ -6,9 +6,10 @@ import Routes from './routes';
 import GlobalStyle from './styles/global';
 
 import light from './styles/themes/light';
+import dark from './styles/themes/dark';
 
 const App: React.FC = () => (
-  <ThemeProvider theme={light}>
+  <ThemeProvider theme={dark}>
     <Routes />
     <GlobalStyle />
   </ThemeProvider>
