@@ -9,7 +9,8 @@
 <p align="center">
 	<a href="#rocket-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 	<a href="#page_facing_up-introdução">Introdução</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-	<a href="#information_source-como-rodar-o-projeto">Como rodar o projeto</a>
+	<a href="#information_source-como-rodar-o-projeto">Como rodar o projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#information_source-extensoes-vs-code">Dependências de Lint</a>
 </p>
 
 ## :rocket: Tecnologias
@@ -24,6 +25,14 @@ Este projeto utiliza as seguintes bibliotecas.
 ## :page_facing_up: Introdução
 
 Saber em qual papel investir em ações é um problema grande, e acompanhar a quantidade de informações necessárias é quase inviável hoje em dia. Este é uma plataforma que indica papéis que devem ser adquiridos, vendidos ou mantidos em uma carteira de ações utilizando uma IA construída con a linguagem Python e disponibilizada via API Rest com Django Framework.
+
+## :information_source: Extensões Vs Code
+
+Para o processo de lint do projeto você precisa instalar algumas extensões:
+
+- Editor Config
+- ESLint
+- Prettier
 
 ## :information_source: Como rodar o projeto
 
