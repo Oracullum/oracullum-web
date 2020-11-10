@@ -40,6 +40,18 @@ Abaixo seguem as intruções para rodar o projeto:
 
 Atenção!!! Você precisa ter as ferramentas [Git](https://git-scm.com), [Node.js v10.16][nodejs] ou superior instaladas no seu computador.
 
+## :boom: Erros comuns
+
+Alguns erros odem ocorrer ao baixar este repositório, como por exemplo a quebra de linha de lf (Linux) para crlf (Windows), caso isso ocorra rode o comando abaixo:
+
+```bash
+# Entrar na pasta do projeto
+cd oracullum-web
+
+# Rodar o fix linting de código do ESLint
+yarn eslint --fix .
+```
+
 ## :mag: Linhas de Comandos
 
 Em seu Terminal ro de os seguintes comandos:
