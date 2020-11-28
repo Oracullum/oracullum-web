@@ -2,6 +2,7 @@ import React, { useState, useCallback, useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 
 import Dashboard from '../../../Dashboard';
+import Exchanges from '../../../Exchanges';
 
 import oracullumLightImg from '../../../../assets/oracullum-light.svg';
 import oracullumDarkImg from '../../../../assets/oracullum-dark.svg';
@@ -105,7 +106,7 @@ const LayoutNavigation: React.FC = () => {
       <ContentWrapper>
         {dashboardActive && <Dashboard />}
         {discoverActive && <h1>Descobrir</h1>}
-        {actionActive && <h1>Todas Ações</h1>}
+        {actionActive && <Exchanges />}
         {reportActive && <h1>Relatórios</h1>}
       </ContentWrapper>
     </Container>
