@@ -11,7 +11,7 @@ interface ContainerProps {
 export const Container = styled.div<ContainerProps>`
   background: ${props => props.theme.colors.white};
   border-radius: 12px;
-  border: 3px solid ${props => props.theme.colors.primaryLighter};
+  border: 3px solid ${props => props.theme.colors.primaryLight};
   padding: 8px;
   width: 100%;
   color: ${props => props.theme.colors.grayLight};
