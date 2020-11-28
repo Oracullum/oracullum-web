@@ -16,11 +16,14 @@ const ExternalLoginButton: React.FC<ExternalLoginButtonProps> = ({
   icon: Icon,
   ...rest
 }) => {
-  const { colors } = useContext(ThemeContext);
+  const { title, colors } = useContext(ThemeContext);
 
   return (
     <Container color={color} {...rest}>
-      <Icon size={size} color={colors.black} />
+      <Icon
+        size={size}
+        color={title === 'light' ? colors.black : colors.white}
+      />
       <Bar color={color} />
     </Container>
   );
