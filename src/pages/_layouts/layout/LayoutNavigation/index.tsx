@@ -3,6 +3,8 @@ import { ThemeContext } from 'styled-components';
 
 import Dashboard from '../../../Dashboard';
 import Exchanges from '../../../Exchanges';
+import Discover from '../../../Discover';
+import Reports from '../../../Reports';
 
 import oracullumLightImg from '../../../../assets/oracullum-light.svg';
 import oracullumDarkImg from '../../../../assets/oracullum-dark.svg';
@@ -105,9 +107,9 @@ const LayoutNavigation: React.FC = () => {
       </AsideNavigationContainer>
       <ContentWrapper>
         {dashboardActive && <Dashboard />}
-        {discoverActive && <h1>Descobrir</h1>}
+        {discoverActive && <Discover />}
         {actionActive && <Exchanges />}
-        {reportActive && <h1>Relatórios</h1>}
+        {reportActive && <Reports />}
       </ContentWrapper>
     </Container>
   );
