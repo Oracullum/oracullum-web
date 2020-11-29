@@ -12,6 +12,7 @@ export const Container = styled.div<ContainerProps>`
   padding: 32px;
 
   width: ${props => `${props.width}%`};
+  min-width: 330px !important;
   height: 80vh;
 
   > h1 {
