@@ -4,11 +4,12 @@ import { Container } from './styles';
 
 interface CardProps {
   title: string;
+  width?: number;
 }
 
-const Card: React.FC<CardProps> = ({ title, children }) => {
+const Card: React.FC<CardProps> = ({ title, width, children }) => {
   return (
-    <Container>
+    <Container width={width}>
       <h1>{title}</h1>
       {children}
     </Container>

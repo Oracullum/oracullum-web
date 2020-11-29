@@ -1,13 +1,17 @@
 import styled from 'styled-components';
 import { lighten } from 'polished';
 
-export const Container = styled.div`
+interface ContainerProps {
+  width?: number;
+}
+
+export const Container = styled.div<ContainerProps>`
   background: ${props => lighten(0.05, props.theme.colors.black)};
   border-radius: 8px;
 
   padding: 32px;
 
-  width: 100%;
+  width: ${props => `${props.width}%`};
   height: 80vh;
 
   > h1 {
