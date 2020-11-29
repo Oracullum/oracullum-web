@@ -22,6 +22,7 @@ import {
 
 import Link from '../Link';
 import Input from '../Input';
+import HistoricTransactional from '../HistoricTransactional';
 
 const Accordion: React.FC = () => {
   const { colors } = useContext(ThemeContext);
@@ -76,9 +77,47 @@ const Accordion: React.FC = () => {
 
       <AccordionContent isOpen={isOpen}>
         <HistoricTransactionals>
-          <span style={{ display: 'block' }}>oi</span>
-          <span style={{ display: 'block' }}>oi</span>
-          <span style={{ display: 'block' }}>oi</span>
+          <HistoricTransactional
+            dateValue="05/09/2020"
+            operationValue="buy"
+            priceValue="39,90"
+            quantityValue="50"
+          />
+
+          <HistoricTransactional
+            dateValue="05/09/2020"
+            operationValue="sell"
+            priceValue="39,90"
+            quantityValue="20"
+          />
+
+          <HistoricTransactional
+            dateValue="05/09/2020"
+            operationValue="buy"
+            priceValue="39,90"
+            quantityValue="50"
+          />
+
+          <HistoricTransactional
+            dateValue="05/09/2020"
+            operationValue="buy"
+            priceValue="39,90"
+            quantityValue="50"
+          />
+
+          <HistoricTransactional
+            dateValue="05/09/2020"
+            operationValue="sell"
+            priceValue="39,90"
+            quantityValue="20"
+          />
+
+          <HistoricTransactional
+            dateValue="05/09/2020"
+            operationValue="buy"
+            priceValue="39,90"
+            quantityValue="50"
+          />
         </HistoricTransactionals>
 
         <Transaction>
