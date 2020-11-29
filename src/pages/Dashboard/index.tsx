@@ -1,17 +1,17 @@
-import React, { useContext } from 'react';
-import { ThemeContext } from 'styled-components';
+import React from 'react';
 
-import Button from '../../components/Button';
-import Card from '../../components/Card';
+import Navbar from '../../components/Navbar';
 
-import { Container } from './styles';
+import { Container, Header } from './styles';
 
 const Dashboard: React.FC = () => {
-  const { colors } = useContext(ThemeContext);
-
   return (
     <Container>
-      <h1>Dashboard</h1>
+      <Header>
+        <h1>Dashboard</h1>
+
+        <Navbar />
+      </Header>
     </Container>
   );
 };

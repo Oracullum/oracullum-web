@@ -47,7 +47,9 @@
     "linebreak-style": 0,
     "no-nested-ternary": 0,
     "jsx-a11y/label-has-associated-control": "off",
-    "@typescript-eslint/no-explicit-any": "off"
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "no-console": "off"
   },
   "settings": {
     "import/resolver": {

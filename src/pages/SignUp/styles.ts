@@ -49,14 +49,17 @@ export const Presentation = styled.div<PresentationProps>`
     z-index: 10;
 
     span {
-      color: ${props => props.theme.colors.primaryLighter};
+      color: ${props => props.theme.colors.white};
       font-family: Titillium Web;
     }
   }
 `;
 
 export const AccessContainer = styled.div`
-  background: ${props => props.theme.colors.white};
+  background: ${props =>
+    props.theme.title === 'light'
+      ? props.theme.colors.white
+      : props.theme.colors.black};
   height: 100vh;
   width: 480px;
 

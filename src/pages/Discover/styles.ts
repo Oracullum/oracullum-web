@@ -25,6 +25,16 @@ export const Container = styled.div`
   }
 `;
 
+export const Header = styled.header`
+  width: 100%;
+
+  margin-bottom: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 export const Tables = styled.div`
   width: 100%;
 
@@ -33,6 +43,6 @@ export const Tables = styled.div`
   justify-content: space-between;
 
   > div + div {
-    margin-left: 120px;
+    margin-left: 80px;
   }
 `;

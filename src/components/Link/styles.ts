@@ -10,17 +10,14 @@ interface ILinkProps {
 
 export const Container = styled.div<ILinkProps>`
   a {
-    min-width: 180px;
-
-    background: ${props =>
-      props.outline ? 'transparent' : shade(0.3, props.color)};
+    background: ${props => (props.outline ? 'transparent' : props.color)};
     color: ${props => (props.outline ? props.color : props.theme.colors.white)};
-    border: 1px solid ${props => props.color};
+    border: 3px solid ${props => props.color};
 
-    padding: 8px 16px;
-    border-radius: 4px;
+    padding: 8px 20px;
+    border-radius: 12px;
 
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
 
     letter-spacing: 1px;
@@ -42,6 +39,10 @@ export const Container = styled.div<ILinkProps>`
             ? lighten(props.amount || 0.2, props.color)
             : darken(props.amount || 0.2, props.color)
           : shade(0.2, props.color)};
+    }
+
+    svg {
+      margin-left: 6px;
     }
   }
 `;

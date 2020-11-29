@@ -9,6 +9,7 @@ import { Form } from '@unform/web';
 import ExternalLoginButton from '../../components/ExternalLoginButton';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import Link from '../../components/Link';
 
 import logoImg from '../../assets/logo.svg';
 import heroImg from '../../assets/hero.svg';
@@ -68,15 +69,13 @@ const SignIn: React.FC = () => {
               <FiLogIn color={colors.white} size={20} />
             </Button>
 
-            <Button type="submit" outline color={colors.primary}>
+            <Link to="/register" outline color={colors.primary}>
               Cadastrar
               <FiUserPlus color={colors.primary} size={20} />
-            </Button>
+            </Link>
           </ActionButtons>
 
           <RememberMeContainer>
-            {/* <Checkbox name="is_student" label="Lembrar-me" /> */}
-
             <ReactLink to="/forgot-password">Esqueçeu sua senha?</ReactLink>
           </RememberMeContainer>
         </AccessContainer>

@@ -4,13 +4,14 @@ import Lottie from 'react-lottie';
 
 import Link from '../../components/Link';
 
-import animationData from '../../assets/hero.json';
+import animationDataDark from '../../assets/hero-dark.json';
+import animationDataLight from '../../assets/hero-light.json';
 import logoImg from '../../assets/logo.svg';
 
 import { Container, ActionButtons, Hero, TotalConnections } from './styles';
 
 const Landing: React.FC = () => {
-  const { colors } = useContext(ThemeContext);
+  const { title, colors } = useContext(ThemeContext);
 
   return (
     <Container>
@@ -36,7 +37,8 @@ const Landing: React.FC = () => {
           options={{
             loop: true,
             autoplay: true,
-            animationData,
+            animationData:
+              title === 'light' ? animationDataLight : animationDataDark,
             rendererSettings: { preserveAspectRatio: 'xMidYMid slice' },
           }}
           height={600}

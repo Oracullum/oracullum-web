@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { FaChevronRight } from 'react-icons/fa';
+import { ThemeContext } from 'styled-components';
 
 import { Container, Item, Divider } from './styles';
 
@@ -15,19 +17,25 @@ const Action: React.FC<ActionProps> = ({
   initialValue,
   stopValue,
 }) => {
+  const { colors } = useContext(ThemeContext);
+
   return (
     <Container>
+      <div />
+
       <Item>
-        <h4>{actionName}</h4>
+        <h3>{actionName}</h3>
         <p>{companyName}</p>
       </Item>
 
       <Divider />
 
       <Item>
-        <h4>{initialValue} BRL</h4>
+        <h3>{initialValue} BRL</h3>
         <p>Stop: {stopValue}</p>
       </Item>
+
+      <FaChevronRight size={18} color={colors.black} />
     </Container>
   );
 };
