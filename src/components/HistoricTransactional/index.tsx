@@ -1,6 +1,4 @@
-import React, { useContext } from 'react';
-import { FaChevronRight } from 'react-icons/fa';
-import { ThemeContext } from 'styled-components';
+import React from 'react';
 
 import { Container, Item, Divider } from './styles';
 
@@ -17,8 +15,6 @@ const HistoricTransactional: React.FC<HistoricTransactionalProps> = ({
   quantityValue,
   priceValue,
 }) => {
-  const { colors } = useContext(ThemeContext);
-
   return (
     <Container isOperationBuy={operationValue}>
       <div />
