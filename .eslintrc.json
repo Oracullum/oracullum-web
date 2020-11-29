@@ -45,7 +45,10 @@
     "react/jsx-props-no-spreading": "off",
     "react/jsx-one-expression-per-line": "off",
     "linebreak-style": 0,
-    "no-nested-ternary": 0
+    "no-nested-ternary": 0,
+    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "no-console": "off"
   },
   "settings": {
     "import/resolver": {

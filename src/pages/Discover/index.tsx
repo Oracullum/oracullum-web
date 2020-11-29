@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Card from '../../components/Card';
-import Action from '../../components/Action';
+import Exchange from '../../components/Exchange';
 
 import { Container, Tables } from './styles';
 
@@ -12,35 +12,35 @@ const Discover: React.FC = () => {
 
       <Tables>
         <Card title="Ações">
-          <Action
+          <Exchange
             actionName="POSI4"
             companyName="Positivo Info."
             initialValue={380.0}
             stopValue={382.2}
           />
 
-          <Action
+          <Exchange
             actionName="POSI4"
             companyName="Positivo Info."
             initialValue={380.0}
             stopValue={382.2}
           />
 
-          <Action
+          <Exchange
             actionName="POSI4"
             companyName="Positivo Info."
             initialValue={380.0}
             stopValue={382.2}
           />
 
-          <Action
+          <Exchange
             actionName="POSI4"
             companyName="Positivo Info."
             initialValue={380.0}
             stopValue={382.2}
           />
 
-          <Action
+          <Exchange
             actionName="POSI4"
             companyName="Positivo Info."
             initialValue={380.0}
