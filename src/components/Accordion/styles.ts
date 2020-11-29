@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { lighten } from 'polished';
+import { lighten, shade } from 'polished';
 
 export const Container = styled.div`
   & + div {
@@ -83,12 +83,29 @@ export const AccordionContent = styled.div<AccordionContentProps>`
 `;
 
 export const HistoricTransactionals = styled.div`
-  background-color: ${lighten(0.05, '#333435')};
+  background-color: #333435;
   width: 100%;
+  max-height: 272px;
 
   padding: 32px 40px;
 
   border-bottom-left-radius: 12px;
+
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 3px ${props => props.theme.colors.primary};
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: ${props => props.theme.colors.primary};
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: ${props => shade(0.2, props.theme.colors.primary)};
+  }
 `;
 
 export const Transaction = styled.div`
@@ -180,7 +197,7 @@ export const Inputs = styled.div`
     background-color: ${props => lighten(0.05, props.theme.colors.background)};
 
     input {
-      color: ${props => props.theme.colors.primary};
+      color: ${props => props.theme.colors.white};
     }
   }
 `;
