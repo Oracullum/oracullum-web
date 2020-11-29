@@ -170,4 +170,20 @@ export const ContentWrapper = styled.div`
   height: 100%;
 
   padding: 32px;
+
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 3px ${props => props.theme.colors.primary};
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: ${props => props.theme.colors.primary};
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: ${props => shade(0.2, props.theme.colors.primary)};
+  }
 `;
