@@ -1,17 +1,22 @@
 import React from 'react';
 
+import Navbar from '../../components/Navbar';
 import Card from '../../components/Card';
 import Exchange from '../../components/Exchange';
 
-import { Container, Tables } from './styles';
+import { Container, Header, Tables } from './styles';
 
 const Discover: React.FC = () => {
   return (
     <Container>
-      <h1>Descobrir</h1>
+      <Header>
+        <h1>Descobrir</h1>
+
+        <Navbar />
+      </Header>
 
       <Tables>
-        <Card title="Ações">
+        <Card title="Ações" width={20}>
           <Exchange
             actionName="POSI4"
             companyName="Positivo Info."
@@ -48,7 +53,7 @@ const Discover: React.FC = () => {
           />
         </Card>
 
-        <Card title="Sugestões" />
+        <Card title="Sugestões" width={80} />
       </Tables>
     </Container>
   );
