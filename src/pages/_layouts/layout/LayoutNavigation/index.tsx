@@ -18,7 +18,9 @@ import {
   FaAlignLeft,
   FaLayerGroup,
   ContentWrapper,
+  FaBusinessTime,
 } from './styles';
+import Enterprises from '../../../Enterprises';
 
 const LayoutNavigation: React.FC = () => {
   const { title } = useContext(ThemeContext);
@@ -27,12 +29,14 @@ const LayoutNavigation: React.FC = () => {
   const [discoverActive, setDiscoverActive] = useState(false);
   const [actionActive, setActionActive] = useState(false);
   const [reportActive, setReportActive] = useState(false);
+  const [enterpriseActive, setEnterpriseActive] = useState(false);
 
   const handleDashboardActive = useCallback(() => {
     setDashboardActive(true);
     setDiscoverActive(false);
     setActionActive(false);
     setReportActive(false);
+    setEnterpriseActive(false);
   }, []);
 
   const handleDiscoverActive = useCallback(() => {
@@ -40,6 +44,7 @@ const LayoutNavigation: React.FC = () => {
     setDiscoverActive(true);
     setActionActive(false);
     setReportActive(false);
+    setEnterpriseActive(false);
   }, []);
 
   const handleActionsActive = useCallback(() => {
@@ -47,6 +52,7 @@ const LayoutNavigation: React.FC = () => {
     setDiscoverActive(false);
     setActionActive(true);
     setReportActive(false);
+    setEnterpriseActive(false);
   }, []);
 
   const handleReportActive = useCallback(() => {
@@ -54,6 +60,15 @@ const LayoutNavigation: React.FC = () => {
     setDiscoverActive(false);
     setActionActive(false);
     setReportActive(true);
+    setEnterpriseActive(false);
+  }, []);
+
+  const handleEnterpriseActive = useCallback(() => {
+    setDashboardActive(false);
+    setDiscoverActive(false);
+    setActionActive(false);
+    setReportActive(false);
+    setEnterpriseActive(true);
   }, []);
 
   return (
@@ -104,12 +119,24 @@ const LayoutNavigation: React.FC = () => {
 
           <span>Relatórios</span>
         </AsideNavigationItem>
+
+        <AsideNavigationItem
+          active={enterpriseActive}
+          onClick={handleEnterpriseActive}
+        >
+          <FaBusinessTime active={enterpriseActive} />
+
+          <div />
+
+          <span>Empresas</span>
+        </AsideNavigationItem>
       </AsideNavigationContainer>
       <ContentWrapper>
         {dashboardActive && <Dashboard />}
         {discoverActive && <Discover />}
         {actionActive && <Exchanges />}
         {reportActive && <Reports />}
+        {enterpriseActive && <Enterprises />}
       </ContentWrapper>
     </Container>
   );
