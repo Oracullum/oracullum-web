@@ -8,6 +8,7 @@ import {
   FaChartLine as FaChartLineOriginal,
   FaAlignLeft as FaAlignLeftOriginal,
   FaLayerGroup as FaLayerGroupOriginal,
+  FaBusinessTime as FaBusinessTimeOriginal,
 } from 'react-icons/fa';
 
 export const Container = styled.div`
@@ -153,6 +154,13 @@ export const FaAlignLeft = styled(FaAlignLeftOriginal).attrs({
 `;
 
 export const FaLayerGroup = styled(FaLayerGroupOriginal).attrs({
+  size: 28,
+})<IconProps>`
+  color: ${props =>
+    props.active ? props.theme.colors.primary : props.theme.colors.black};
+`;
+
+export const FaBusinessTime = styled(FaBusinessTimeOriginal).attrs({
   size: 28,
 })<IconProps>`
   color: ${props =>
