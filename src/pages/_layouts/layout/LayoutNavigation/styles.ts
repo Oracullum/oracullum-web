@@ -9,6 +9,7 @@ import {
   FaAlignLeft as FaAlignLeftOriginal,
   FaLayerGroup as FaLayerGroupOriginal,
   FaBusinessTime as FaBusinessTimeOriginal,
+  FaUser as FaUserOriginal,
 } from 'react-icons/fa';
 
 export const Container = styled.div`
@@ -133,6 +134,13 @@ interface IconProps extends IconBaseProps {
 }
 
 export const FaThLarge = styled(FaThLargeOriginal).attrs({
+  size: 28,
+})<IconProps>`
+  color: ${props =>
+    props.active ? props.theme.colors.primary : props.theme.colors.black};
+`;
+
+export const FaUser = styled(FaUserOriginal).attrs({
   size: 28,
 })<IconProps>`
   color: ${props =>
