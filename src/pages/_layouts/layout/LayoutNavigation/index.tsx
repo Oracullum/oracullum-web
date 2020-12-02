@@ -19,8 +19,10 @@ import {
   FaLayerGroup,
   ContentWrapper,
   FaBusinessTime,
+  FaUser,
 } from './styles';
 import Enterprises from '../../../Enterprises';
+import Profile from '../../../Profile';
 
 const LayoutNavigation: React.FC = () => {
   const { title } = useContext(ThemeContext);
@@ -30,9 +32,20 @@ const LayoutNavigation: React.FC = () => {
   const [actionActive, setActionActive] = useState(false);
   const [reportActive, setReportActive] = useState(false);
   const [enterpriseActive, setEnterpriseActive] = useState(false);
+  const [profileActive, setProfileActive] = useState(false);
 
   const handleDashboardActive = useCallback(() => {
     setDashboardActive(true);
+    setProfileActive(false);
+    setDiscoverActive(false);
+    setActionActive(false);
+    setReportActive(false);
+    setEnterpriseActive(false);
+  }, []);
+
+  const handleProfileActive = useCallback(() => {
+    setDashboardActive(false);
+    setProfileActive(true);
     setDiscoverActive(false);
     setActionActive(false);
     setReportActive(false);
@@ -41,6 +54,7 @@ const LayoutNavigation: React.FC = () => {
 
   const handleDiscoverActive = useCallback(() => {
     setDashboardActive(false);
+    setProfileActive(false);
     setDiscoverActive(true);
     setActionActive(false);
     setReportActive(false);
@@ -49,6 +63,7 @@ const LayoutNavigation: React.FC = () => {
 
   const handleActionsActive = useCallback(() => {
     setDashboardActive(false);
+    setProfileActive(false);
     setDiscoverActive(false);
     setActionActive(true);
     setReportActive(false);
@@ -57,6 +72,7 @@ const LayoutNavigation: React.FC = () => {
 
   const handleReportActive = useCallback(() => {
     setDashboardActive(false);
+    setProfileActive(false);
     setDiscoverActive(false);
     setActionActive(false);
     setReportActive(true);
@@ -65,6 +81,7 @@ const LayoutNavigation: React.FC = () => {
 
   const handleEnterpriseActive = useCallback(() => {
     setDashboardActive(false);
+    setProfileActive(false);
     setDiscoverActive(false);
     setActionActive(false);
     setReportActive(false);
@@ -88,6 +105,17 @@ const LayoutNavigation: React.FC = () => {
           <div />
 
           <span>Dashboard</span>
+        </AsideNavigationItem>
+
+        <AsideNavigationItem
+          active={profileActive}
+          onClick={handleProfileActive}
+        >
+          <FaUser active={profileActive} />
+
+          <div />
+
+          <span>Perfíl</span>
         </AsideNavigationItem>
 
         <AsideNavigationItem
@@ -133,6 +161,7 @@ const LayoutNavigation: React.FC = () => {
       </AsideNavigationContainer>
       <ContentWrapper>
         {dashboardActive && <Dashboard />}
+        {profileActive && <Profile />}
         {discoverActive && <Discover />}
         {actionActive && <Exchanges />}
         {reportActive && <Reports />}
