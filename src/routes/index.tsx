@@ -14,6 +14,7 @@ const Routes: React.FC = () => (
       <Route path="/login" component={SignIn} />
       <Route path="/register" component={SignUp} />
       <Route path="/dashboard" component={LayoutNavigation} />
+      <Route path="/profile" component={LayoutNavigation} />
     </Switch>
   </BrowserRouter>
 );
