@@ -1,7 +1,6 @@
 import React, { useContext, useCallback } from 'react';
-import { Link } from 'react-router-dom';
 import { ThemeContext } from 'styled-components';
-import { FaUser, FaSignOutAlt } from 'react-icons/fa';
+import { FaSignOutAlt } from 'react-icons/fa';
 import Switch from 'react-switch';
 
 import HandlesContext from '../../context/handles';
@@ -36,12 +35,6 @@ const Navbar: React.FC = () => {
 
       <NavigationBar>
         <ul>
-          <li>
-            <Link to="/profile">
-              <FaUser size={16} color={colors.primary} />
-              MEU PERFIL
-            </Link>
-          </li>
           <li>
             <button type="button">
               <FaSignOutAlt size={16} color={colors.primary} />
