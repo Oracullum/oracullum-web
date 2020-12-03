@@ -15,7 +15,7 @@
 
 ## :rocket: Tecnologias
 
-Este projeto utiliza as seguintes bibliotecas.
+Este projeto utiliza as seguintes bibliotecas:
 
 - [polished](https://polished.js.org/)
 - [react-icons](https://react-icons.github.io/react-icons/)
