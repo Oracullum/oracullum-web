@@ -8,6 +8,8 @@ const Enterprises: React.FC = () => {
     <Container>
       <h1>Empresas</h1>
 
+      <span>aqui ficará os botões da modal</span>
+
       <Items>
         <AccordionEnterprise />
         <AccordionEnterprise />
@@ -18,4 +20,5 @@ const Enterprises: React.FC = () => {
     </Container>
   );
 };
+
 export default Enterprises;
