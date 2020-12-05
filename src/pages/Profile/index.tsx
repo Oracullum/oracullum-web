@@ -1,60 +1,50 @@
-import React from 'react';
+import { FormHandles } from '@unform/core';
+import { Form } from '@unform/web';
+import React, { useCallback, useRef } from 'react';
 
 import Navbar from '../../components/Navbar';
-import Card from '../../components/Card';
-import Exchange from '../../components/Exchange';
 
-import { Container, Header, Tables } from './styles';
+import { Container, Header, BoxProfile, Item } from './styles';
 
 const Profile: React.FC = () => {
+  const formRef = useRef<FormHandles>(null);
+
+  const handleSubmit = useCallback((data: any) => {
+    console.log(data);
+    // data.operation = isBuy ? 'buy' : 'sell';
+  }, []);
   return (
     <Container>
       <Header>
-        <h1>Descobrir</h1>
+        <h1>Perfil</h1>
 
         <Navbar />
       </Header>
+      <BoxProfile>
+        <Form ref={formRef} onSubmit={handleSubmit}>
+          <Item>
+            <label>Nome</label>
+            <input name="name" />
+          </Item>
 
-      <Tables>
-        <Card title="Ações" width={20}>
-          <Exchange
-            actionName="POSI4"
-            companyName="Positivo Info."
-            initialValue={380.0}
-            stopValue={382.2}
-          />
+          <Item>
+            <label>Email</label>
+            <input name="email" />
+          </Item>
 
-          <Exchange
-            actionName="POSI4"
-            companyName="Positivo Info."
-            initialValue={380.0}
-            stopValue={382.2}
-          />
+          <Item>
+            <label>Senha</label>
+            <input name="password" type="password" />
+          </Item>
 
-          <Exchange
-            actionName="POSI4"
-            companyName="Positivo Info."
-            initialValue={380.0}
-            stopValue={382.2}
-          />
+          <Item>
+            <label>Confirmação de Senha</label>
+            <input name="confirm_password" type="password" />
+          </Item>
 
-          <Exchange
-            actionName="POSI4"
-            companyName="Positivo Info."
-            initialValue={380.0}
-            stopValue={382.2}
-          />
-
-          <Exchange
-            actionName="POSI4"
-            companyName="Positivo Info."
-            initialValue={380.0}
-            stopValue={382.2}
-          />
-        </Card>
-
-        <Card title="Sugestões" width={80} />
-      </Tables>
+          <button type="button">Atualizar</button>
+        </Form>
+      </BoxProfile>
     </Container>
   );
 };
