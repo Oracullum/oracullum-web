@@ -23,7 +23,7 @@ export default {
 
     grayLight: '#909090',
     gray: '#808080',
-    grayDark: '#707070',
+    grayDark: '#656565',
 
     background: '#232526',
     text: '#FBFBFB',
