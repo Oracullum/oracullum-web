@@ -49,7 +49,8 @@
     "jsx-a11y/label-has-associated-control": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/explicit-module-boundary-types": 0,
-    "no-console": "off"
+    "no-console": "off",
+    "react/void-dom-elements-no-children": "off"
   },
   "settings": {
     "import/resolver": {
