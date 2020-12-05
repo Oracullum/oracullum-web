@@ -33,6 +33,10 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  h1 {
+    color: ${props => props.theme.colors.primary};
+  }
 `;
 
 export const Tables = styled.div`
@@ -44,5 +48,52 @@ export const Tables = styled.div`
 
   > div + div {
     margin-left: 80px;
+  }
+`;
+
+export const BoxProfile = styled.header`
+  background: #414345;
+
+  padding: 25px 35px;
+  margin: 30px 60px;
+
+  border-radius: 12px;
+
+  form button {
+    background-color: ${props => props.theme.colors.primary};
+    color: ${props => props.theme.colors.white};
+
+    font-weight: bold;
+
+    padding: 10px 15px;
+
+    border-radius: 8px;
+  }
+`;
+
+export const Item = styled.header`
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 24px;
+
+  label {
+    font-size: 1.2em;
+    color: ${props => props.theme.colors.grayDark};
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  input {
+    max-width: 250px;
+    min-height: 32px;
+
+    padding: 8px;
+
+    background-color: transparent;
+    color: ${props => props.theme.colors.white};
+
+    border: 1px solid ${props => props.theme.colors.primary};
+    border-radius: 8px;
   }
 `;
