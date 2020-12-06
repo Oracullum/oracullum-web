@@ -9,7 +9,8 @@ interface ContainerProps {
 }
 
 export const Container = styled.div<ContainerProps>`
-  background: ${props => props.theme.colors.white};
+  background: ${props =>
+    props.theme.title === 'light' ? props.theme.colors.white : 'transparent'};
   border-radius: 12px;
   border: 3px solid ${props => props.theme.colors.primaryLight};
   padding: 8px;
@@ -54,7 +55,10 @@ export const Container = styled.div<ContainerProps>`
     background: transparent;
     flex: 1;
     border: 0;
-    color: ${props => props.theme.colors.black};
+    color: ${props =>
+      props.theme.title === 'light'
+        ? props.theme.colors.black
+        : props.theme.colors.primary};
 
     &::placeholder {
       color: ${props => props.theme.colors.grayLight};
