@@ -1,12 +1,19 @@
 import React from 'react';
+
 import AccordionEnterprise from '../../components/AccordionEnterprise';
 
-import { Container, Items } from './styles';
+import Navbar from '../../components/Navbar';
+
+import { Container, Header, Items } from './styles';
 
 const Enterprises: React.FC = () => {
   return (
     <Container>
-      <h1>Empresas</h1>
+      <Header>
+        <h1>Empresas</h1>
+
+        <Navbar />
+      </Header>
 
       <Items>
         <AccordionEnterprise />

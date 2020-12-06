@@ -46,7 +46,9 @@ export const ActionButtons = styled.div`
 export const Hero = styled.div`
   grid-area: hero;
 
-  margin-bottom: 80px;
+  align-self: flex-end;
+
+  margin-bottom: 20px;
 `;
 
 export const TotalConnections = styled.div`
