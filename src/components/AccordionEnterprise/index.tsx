@@ -1,8 +1,9 @@
 import React, { useState, useContext } from 'react';
-
 import { ThemeContext } from 'styled-components';
-
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import Ink from 'react-ink';
+
+import EnterpriseExchange from '../EnterpriseExchange';
 
 import {
   Container,
@@ -13,17 +14,17 @@ import {
   Enterprises,
 } from './styles';
 
-import EnterpriseExchange from '../EnterpriseExchange';
-
 const Accordion: React.FC = () => {
-  const { colors } = useContext(ThemeContext);
+  const { title, colors } = useContext(ThemeContext);
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
     <Container>
-      <AccordionTitle>
-        <span>ITUB4</span>
+      <AccordionTitle onClick={() => setIsOpen(!isOpen)}>
+        <Ink />
+
+        <span>Itaú</span>
 
         <Items>
           <Item>
@@ -34,22 +35,28 @@ const Accordion: React.FC = () => {
 
         {isOpen ? (
           <button type="button" onClick={() => setIsOpen(!isOpen)}>
-            <FaChevronUp color={colors.primary} size={20} />
+            <FaChevronUp
+              color={title === 'light' ? colors.white : colors.primary}
+              size={20}
+            />
           </button>
         ) : (
           <button type="button" onClick={() => setIsOpen(!isOpen)}>
-            <FaChevronDown color={colors.primary} size={20} />
+            <FaChevronDown
+              color={title === 'light' ? colors.white : colors.primary}
+              size={20}
+            />
           </button>
         )}
       </AccordionTitle>
 
       <AccordionContent isOpen={isOpen}>
         <Enterprises>
-          <EnterpriseExchange enterpriseValue="ITUB4" />
+          <EnterpriseExchange value="ITUB4" />
 
-          <EnterpriseExchange enterpriseValue="ITUB4" />
+          <EnterpriseExchange value="ITUB4" />
 
-          <EnterpriseExchange enterpriseValue="ITUB4" />
+          <EnterpriseExchange value="ITUB4" />
         </Enterprises>
       </AccordionContent>
     </Container>
