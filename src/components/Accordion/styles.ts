@@ -1,14 +1,19 @@
 import styled, { css } from 'styled-components';
-import { lighten, shade } from 'polished';
+import { lighten, shade, darken } from 'polished';
 
 export const Container = styled.div`
+  border-radius: 16px;
+
   & + div {
     margin-top: 24px;
   }
 `;
 
 export const AccordionTitle = styled.div`
-  background: ${props => lighten(0.05, props.theme.colors.background)};
+  background: ${props =>
+    props.theme.title === 'light'
+      ? darken(0.05, props.theme.colors.primaryLight)
+      : lighten(0.05, props.theme.colors.black)};
   border-radius: 16px;
 
   padding: 32px;
@@ -18,12 +23,19 @@ export const AccordionTitle = styled.div`
 
   width: 100%;
 
+  position: relative;
+
+  cursor: pointer;
+
   z-index: 1;
 
   > span {
     font-size: 1.8em;
     font-weight: bold;
-    color: ${props => props.theme.colors.primary};
+    color: ${props =>
+      props.theme.title === 'light'
+        ? props.theme.colors.yellow
+        : props.theme.colors.primary};
 
     margin-right: 86px;
   }
@@ -42,13 +54,16 @@ export const Item = styled.div`
 
   label {
     margin-bottom: 8px;
-    color: #656565;
+    color: ${props => props.theme.colors.white};
   }
 
   span {
     font-size: 1.4em;
     font-weight: bold;
-    color: ${props => props.theme.colors.primary};
+    color: ${props =>
+      props.theme.title === 'light'
+        ? props.theme.colors.yellow
+        : props.theme.colors.primary};
   }
 `;
 
@@ -57,13 +72,8 @@ interface AccordionContentProps {
 }
 
 export const AccordionContent = styled.div<AccordionContentProps>`
-  /* padding: 32px; */
-
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
-
-  margin-top: -10px;
-  /* padding-top: 32px; */
 
   visibility: ${props => (props.isOpen ? 'visible' : 'hidden')};
   opacity: ${props => (props.isOpen ? 1 : 0)};
@@ -71,6 +81,38 @@ export const AccordionContent = styled.div<AccordionContentProps>`
   transition: all 200ms;
 
   display: flex;
+
+  position: relative;
+
+  &:before {
+    content: '';
+    background: ${props =>
+      props.theme.title === 'light'
+        ? darken(0.2, props.theme.colors.white)
+        : lighten(0.02, props.theme.colors.black)};
+    width: 12px;
+    height: 20px;
+
+    margin-top: -12px;
+
+    position: absolute;
+  }
+
+  &:after {
+    content: '';
+    background: ${props =>
+      props.theme.title === 'light'
+        ? darken(0.06, props.theme.colors.white)
+        : lighten(0.05, props.theme.colors.black)};
+    width: 12px;
+    height: 20px;
+
+    right: 0;
+
+    margin-top: -12px;
+
+    position: absolute;
+  }
 
   ${props =>
     !props.isOpen &&
@@ -83,11 +125,14 @@ export const AccordionContent = styled.div<AccordionContentProps>`
 `;
 
 export const HistoricTransactionals = styled.div`
-  background-color: #333435;
+  background-color: ${props =>
+    props.theme.title === 'light'
+      ? darken(0.2, props.theme.colors.white)
+      : lighten(0.02, props.theme.colors.black)};
   width: 100%;
   max-height: 272px;
 
-  padding: 32px 40px;
+  padding: 6px 40px;
 
   border-bottom-left-radius: 12px;
 
@@ -109,10 +154,13 @@ export const HistoricTransactionals = styled.div`
 `;
 
 export const Transaction = styled.div`
-  background: ${props => lighten(0.05, props.theme.colors.background)};
+  background: ${props =>
+    props.theme.title === 'light'
+      ? darken(0.06, props.theme.colors.white)
+      : lighten(0.05, props.theme.colors.black)};
   width: 100%;
 
-  padding: 32px 40px;
+  padding: 32px 100px;
 
   border-bottom-right-radius: 12px;
 
@@ -195,6 +243,8 @@ export const Inputs = styled.div`
   div {
     border: 1px solid ${props => props.theme.colors.primary};
     background-color: ${props => lighten(0.05, props.theme.colors.background)};
+
+    height: 40px;
 
     input {
       color: ${props => props.theme.colors.white};

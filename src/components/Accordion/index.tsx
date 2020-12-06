@@ -1,4 +1,5 @@
 import React, { useState, useContext, useCallback, useRef } from 'react';
+import Ink from 'react-ink';
 
 import { ThemeContext } from 'styled-components';
 
@@ -25,7 +26,7 @@ import Input from '../Input';
 import HistoricTransactional from '../HistoricTransactional';
 
 const Accordion: React.FC = () => {
-  const { colors } = useContext(ThemeContext);
+  const { title, colors } = useContext(ThemeContext);
 
   const formRef = useRef<FormHandles>(null);
 
@@ -44,7 +45,9 @@ const Accordion: React.FC = () => {
 
   return (
     <Container>
-      <AccordionTitle>
+      <AccordionTitle onClick={() => setIsOpen(!isOpen)}>
+        <Ink />
+
         <span>ITUB4</span>
 
         <Items>
@@ -66,11 +69,17 @@ const Accordion: React.FC = () => {
 
         {isOpen ? (
           <button type="button" onClick={() => setIsOpen(!isOpen)}>
-            <FaChevronUp color={colors.primary} size={20} />
+            <FaChevronUp
+              color={title === 'light' ? colors.white : colors.primary}
+              size={20}
+            />
           </button>
         ) : (
           <button type="button" onClick={() => setIsOpen(!isOpen)}>
-            <FaChevronDown color={colors.primary} size={20} />
+            <FaChevronDown
+              color={title === 'light' ? colors.white : colors.primary}
+              size={20}
+            />
           </button>
         )}
       </AccordionTitle>
