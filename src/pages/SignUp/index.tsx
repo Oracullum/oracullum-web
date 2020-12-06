@@ -3,8 +3,14 @@ import { Link as ReactLink } from 'react-router-dom';
 import { ThemeContext } from 'styled-components';
 import { FaGoogle, FaFacebookF } from 'react-icons/fa';
 import { FiMail, FiUser, FiEye, FiUserPlus, FiLogIn } from 'react-icons/fi';
+import { toast } from 'react-toastify';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
+import * as Yup from 'yup';
+
+import getValidationErrors from '../../utils/getValidationErrors';
+
+import api from '../../services/api';
 
 import ExternalLoginButton from '../../components/ExternalLoginButton';
 import Input from '../../components/Input';
@@ -29,7 +35,35 @@ const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
   const handleSubmit = useCallback(async (data: object) => {
-    console.log(data);
+    try {
+      const schema = Yup.object().shape({
+        name: Yup.string()
+          .required('Nome de usuário obrigatório')
+          .max(150, 'No máximo 150 dígitos!'),
+        email: Yup.string()
+          .email('Digite um e-mail válido!')
+          .required('E-mail obrigatório!'),
+        password: Yup.string().min(6, 'No mínimo 6 dígitos!'),
+      });
+
+      await schema.validate(data, { abortEarly: false });
+
+      formRef.current?.setErrors({});
+
+      await api.post('users', data);
+
+      toast.success('Cadastro efetuado com sucesso!');
+    } catch (err) {
+      const errors = getValidationErrors(err);
+
+      formRef.current?.setErrors(errors);
+
+      if (err instanceof Yup.ValidationError) {
+        toast.info('Por favor preencha todos os campos obrigatórios!');
+      } else {
+        toast.error('Ocorreu um erro no cadastro, tente novamente!');
+      }
+    }
   }, []);
 
   return (
@@ -59,7 +93,7 @@ const SignUp: React.FC = () => {
             ou com <strong>Oracullum</strong>
           </span>
 
-          <Input name="Nome" icon={FiUser} placeholder="Nome" />
+          <Input name="name" icon={FiUser} placeholder="Nome" />
 
           <Input name="email" icon={FiMail} placeholder="E-mail" />
 
@@ -72,7 +106,7 @@ const SignUp: React.FC = () => {
             </Button>
 
             <Link to="/login" outline color={colors.primary}>
-              Entrar
+              Login
               <FiLogIn color={colors.primary} size={20} />
             </Link>
           </ActionButtons>
