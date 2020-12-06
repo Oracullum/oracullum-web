@@ -1,6 +1,8 @@
 import React, { useCallback } from 'react';
 import { ThemeProvider, DefaultTheme } from 'styled-components';
+import { ToastContainer } from 'react-toastify';
 
+import { AuthProvider } from './context/AuthContext';
 import { HandlesProvider } from './context/handles';
 import usePersistedState from './hooks/usePersistedState';
 
@@ -19,12 +21,15 @@ const App: React.FC = () => {
   }, [theme.title, setTheme]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <HandlesProvider toggleTheme={toggleTheme}>
-        <Routes />
-        <GlobalStyle />
-      </HandlesProvider>
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider theme={theme}>
+        <HandlesProvider toggleTheme={toggleTheme}>
+          <Routes />
+          <GlobalStyle />
+          <ToastContainer autoClose={3000} />
+        </HandlesProvider>
+      </ThemeProvider>
+    </AuthProvider>
   );
 };
 
