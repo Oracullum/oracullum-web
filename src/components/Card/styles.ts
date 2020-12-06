@@ -1,12 +1,15 @@
 import styled from 'styled-components';
-import { lighten } from 'polished';
+import { lighten, darken } from 'polished';
 
 interface ContainerProps {
   width?: number;
 }
 
 export const Container = styled.div<ContainerProps>`
-  background: ${props => lighten(0.05, props.theme.colors.black)};
+  background: ${props =>
+    props.theme.title === 'light'
+      ? darken(0.05, props.theme.colors.white)
+      : lighten(0.05, props.theme.colors.black)};
   border-radius: 8px;
 
   padding: 32px;
