@@ -32,7 +32,7 @@ export const Container = styled.div<ILinkProps>`
     transition: background-color 0.4s;
 
     &:hover {
-      color: ${props => props.outline && lighten(0.4, props.color)};
+      color: ${props => props.outline && lighten(0.8, props.color)};
       background: ${props =>
         props.outline && props.func
           ? props.func === 'lighten'
