@@ -3,17 +3,20 @@ import { ThemeContext } from 'styled-components';
 import { FaSignOutAlt } from 'react-icons/fa';
 import Switch from 'react-switch';
 
+import { useAuth } from '../../context/AuthContext';
 import HandlesContext from '../../context/handles';
 
 import { Container, ThemeSwitcher, NavigationBar } from './styles';
 
 const Navbar: React.FC = () => {
+  const { signOut } = useAuth();
+
   const { title, colors } = useContext(ThemeContext);
   const { toggleTheme } = useContext(HandlesContext);
 
   const handleSignOut = useCallback(() => {
-    console.log('sair');
-  }, []);
+    signOut();
+  }, [signOut]);
 
   return (
     <Container>
@@ -36,7 +39,7 @@ const Navbar: React.FC = () => {
       <NavigationBar>
         <ul>
           <li>
-            <button type="button">
+            <button type="button" onClick={handleSignOut}>
               <FaSignOutAlt size={16} color={colors.primary} />
               SAIR
             </button>
