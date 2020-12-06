@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { shade, lighten } from 'polished';
+import { shade, lighten, darken } from 'polished';
 
 export const Container = styled.div`
   form {
@@ -13,7 +13,10 @@ export const Container = styled.div`
     justify-content: center;
   }
 
-  background: #414345;
+  background: ${props =>
+    props.theme.title === 'light'
+      ? props.theme.colors.primaryLight
+      : lighten(0.05, props.theme.colors.black)};
   margin: 24px 0;
 
   border-radius: 8px;
@@ -22,8 +25,6 @@ export const Container = styled.div`
   align-items: center;
 
   height: 54px;
-
-  cursor: pointer;
 
   transition: background 200ms;
 
@@ -36,26 +37,46 @@ export const Container = styled.div`
     height: 100%;
     width: 6px;
 
-    background: ${props => props.theme.colors.greenLight};
+    background: ${props =>
+      props.theme.title === 'light'
+        ? props.theme.colors.yellow
+        : props.theme.colors.greenLight};
 
     border-bottom-left-radius: 8px;
     border-top-left-radius: 8px;
   }
 
   &:hover {
-    background: ${shade(0.1, '#414345')};
+    background: ${props =>
+      props.theme.title === 'light'
+        ? darken(0.04, props.theme.colors.primaryLight)
+        : shade(0.1, '#414345')};
   }
 
   div p {
-    color: ${props => props.theme.colors.greenLight};
+    color: ${props =>
+      props.theme.title === 'light'
+        ? props.theme.colors.yellow
+        : props.theme.colors.greenLight};
   }
+`;
+
+export const Divider = styled.div`
+  width: 3px;
+  height: 80%;
+
+  background: ${props =>
+    props.theme.title === 'light'
+      ? props.theme.colors.primaryLighter
+      : '#2b2d2f'};
 `;
 
 export const Item = styled.div`
   margin: 0 16px;
 
   h3 {
-    color: #ccc;
+    color: ${props =>
+      props.theme.title === 'light' ? props.theme.colors.white : '#ccc'};
     font-weight: 400;
     font-size: 1.1em;
   }
@@ -67,40 +88,16 @@ export const Item = styled.div`
     font-size: 1.4em;
   }
 
-  button {
-    height: 40px;
-    margin-top: 7px;
-    width: 100%;
-    font-size: 1em;
-    padding: 4px 8px;
-  }
-`;
-
-export const Divider = styled.div`
-  width: 3px;
-  height: 80%;
-
-  background: #2b2d2f;
-`;
-
-export const Inputs = styled.div`
-  margin: 0 16px;
-
-  h3 {
-    color: #ccc;
-    font-weight: 400;
-    font-size: 1.1em;
-  }
   div {
     border: 1px solid ${props => props.theme.colors.primary};
     background-color: ${props => lighten(0.05, props.theme.colors.background)};
-    height: 28px;
+    height: 22px;
     width: 85px;
     margin-top: 2px;
     border-radius: 8px;
 
     input {
-      color: ${props => props.theme.colors.white};
+      color: ${props => props.theme.colors.primary};
       width: 100%;
     }
   }
@@ -108,8 +105,24 @@ export const Inputs = styled.div`
   button {
     background-color: ${props => props.theme.colors.primary};
     border-radius: 8px;
+
     padding: 6px 10px;
+
     color: ${props => props.theme.colors.white};
+
     font-weight: bold;
+
+    transition: all 600ms;
+
+    &:hover {
+      color: ${props =>
+        props.theme.title === 'light'
+          ? props.theme.colors.primary
+          : props.theme.colors.black};
+      background: ${props =>
+        props.theme.title === 'light'
+          ? lighten(0.05, props.theme.colors.yellow)
+          : props.theme.colors.primaryLighter};
+    }
   }
 `;

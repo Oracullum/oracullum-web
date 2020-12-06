@@ -3,15 +3,13 @@ import { Form } from '@unform/web';
 import React, { useCallback, useRef } from 'react';
 import Input from '../Input';
 
-import { Container, Item, Divider, Inputs } from './styles';
+import { Container, Item, Divider } from './styles';
 
 interface EnterpriseExchangeProps {
-  enterpriseValue: string;
+  value: string;
 }
 
-const EnterpriseExchange: React.FC<EnterpriseExchangeProps> = ({
-  enterpriseValue,
-}) => {
+const EnterpriseExchange: React.FC<EnterpriseExchangeProps> = ({ value }) => {
   const formRef = useRef<FormHandles>(null);
 
   const handleSubmit = useCallback((data: any) => {
@@ -24,23 +22,25 @@ const EnterpriseExchange: React.FC<EnterpriseExchangeProps> = ({
       <Form ref={formRef} onSubmit={handleSubmit}>
         <Item>
           <h3>Ação</h3>
-          <p>{enterpriseValue}</p>
+
+          <p>{value}</p>
         </Item>
 
         <Divider />
 
-        <Inputs>
+        <Item>
           <h3>Quantidade</h3>
+
           <Input name="quantity" />
-        </Inputs>
+        </Item>
 
         <Divider />
 
-        <Inputs>
-          <button type="button" onClick={handleSubmit}>
+        <Item>
+          <button type="submit" onClick={handleSubmit}>
             Comprar
           </button>
-        </Inputs>
+        </Item>
       </Form>
     </Container>
   );
