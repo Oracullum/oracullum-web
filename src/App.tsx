@@ -26,7 +26,7 @@ const App: React.FC = () => {
         <HandlesProvider toggleTheme={toggleTheme}>
           <Routes />
           <GlobalStyle />
-          <ToastContainer autoClose={3000} />
+          <ToastContainer autoClose={3000} limit={2} />
         </HandlesProvider>
       </ThemeProvider>
     </AuthProvider>
