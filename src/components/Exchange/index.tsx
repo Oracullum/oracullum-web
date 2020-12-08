@@ -17,7 +17,7 @@ const Action: React.FC<ActionProps> = ({
   initialValue,
   stopValue,
 }) => {
-  const { colors } = useContext(ThemeContext);
+  const { title, colors } = useContext(ThemeContext);
 
   return (
     <Container>
@@ -35,7 +35,10 @@ const Action: React.FC<ActionProps> = ({
         <p>Stop: {stopValue}</p>
       </Item>
 
-      <FaChevronRight size={18} color={colors.black} />
+      <FaChevronRight
+        size={18}
+        color={title === 'light' ? colors.black : colors.white}
+      />
     </Container>
   );
 };

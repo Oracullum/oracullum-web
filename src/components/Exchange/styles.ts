@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { shade } from 'polished';
 
 export const Container = styled.div`
-  /* background: #414345; */
   background: ${props =>
     props.theme.title === 'light'
       ? props.theme.colors.primary
@@ -55,13 +54,11 @@ export const Item = styled.div`
   h3 {
     color: ${props => props.theme.colors.primary};
     font-weight: bold;
-    font-size: 1.1em;
   }
 
   p {
     margin-top: 2px;
     font-weight: bold;
-    font-size: 1.4em;
   }
 `;
 
