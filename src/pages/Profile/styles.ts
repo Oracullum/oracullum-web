@@ -1,3 +1,4 @@
+import { darken, lighten } from 'polished';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -52,10 +53,12 @@ export const Tables = styled.div`
 `;
 
 export const BoxProfile = styled.header`
-  background: #414345;
+  background: ${props =>
+    props.theme.title === 'light'
+      ? darken(0.05, props.theme.colors.white)
+      : lighten(0.05, props.theme.colors.black)};
 
   padding: 25px 35px;
-  margin: 30px 60px;
 
   border-radius: 12px;
 
