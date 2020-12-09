@@ -3,8 +3,14 @@ import { Link as ReactLink } from 'react-router-dom';
 import { ThemeContext } from 'styled-components';
 import { FaGoogle, FaFacebookF } from 'react-icons/fa';
 import { FiMail, FiEye, FiUserPlus, FiLogIn } from 'react-icons/fi';
+import { toast } from 'react-toastify';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
+import * as Yup from 'yup';
+
+import getValidationErrors from '../../utils/getValidationErrors';
+
+import { useAuth } from '../../context/AuthContext';
 
 import ExternalLoginButton from '../../components/ExternalLoginButton';
 import Input from '../../components/Input';
@@ -23,14 +29,53 @@ import {
   RememberMeContainer,
 } from './styles';
 
+interface SignInFormData {
+  email: string;
+  password: string;
+}
+
 const SignIn: React.FC = () => {
+  const { signIn } = useAuth();
   const { colors } = useContext(ThemeContext);
 
   const formRef = useRef<FormHandles>(null);
 
-  const handleSubmit = useCallback(async (data: object) => {
-    console.log(data);
-  }, []);
+  const handleSubmit = useCallback(
+    async (data: SignInFormData) => {
+      try {
+        const schema = Yup.object().shape({
+          email: Yup.string()
+            .email('Digite um e-mail válido!')
+            .required('E-mail obrigatório!'),
+          password: Yup.string().required('Digite sua senha!'),
+        });
+
+        await schema.validate(data, { abortEarly: false });
+
+        formRef.current?.setErrors({});
+
+        signIn({
+          email: data.email,
+          password: data.password,
+        });
+
+        toast.success('Bem vindo ao Oracullum!');
+      } catch (err) {
+        const errors = getValidationErrors(err);
+
+        formRef.current?.setErrors(errors);
+
+        if (err instanceof Yup.ValidationError) {
+          toast.info('Por favor preencha todos os campos obrigatórios!');
+        } else {
+          toast.error(
+            'Ocorreu um erro ao efetuar o login, tente novamente mais tarde!',
+          );
+        }
+      }
+    },
+    [signIn],
+  );
 
   return (
     <Container>
@@ -65,7 +110,7 @@ const SignIn: React.FC = () => {
 
           <ActionButtons>
             <Button type="submit" color={colors.primary}>
-              Login
+              Entrar
               <FiLogIn color={colors.white} size={20} />
             </Button>
 

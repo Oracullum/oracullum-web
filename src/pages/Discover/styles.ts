@@ -3,13 +3,21 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+export const Header = styled.header`
+  width: 100%;
+
+  margin-bottom: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   > h1 {
-    margin-bottom: 64px;
-
     position: relative;
 
-    width: 130px;
+    width: 135px;
 
     &:after {
       content: '';
@@ -23,16 +31,6 @@ export const Container = styled.div`
       height: 2px;
     }
   }
-`;
-
-export const Header = styled.header`
-  width: 100%;
-
-  margin-bottom: 32px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 `;
 
 export const Tables = styled.div`

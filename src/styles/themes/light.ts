@@ -5,11 +5,16 @@ export default {
     primaryLight: '#FF7300',
     primary: '#FD520F',
 
+    // primaryLighter: '#B6B6F2',
+    // primaryLight: '#9595E9',
+    // primary: '#7475FF',
+
     secondaryLighter: '#656565',
     secondaryLight: '#414345',
     secondary: '#232526',
 
     primaryGradient: 'linear-gradient(180deg, #FF512F 0%, #F09819 100%);',
+    // primaryGradient: 'linear-gradient(180deg, #7475FF 0%, #B6B6F2 100%);',
     secondaryGradient: 'linear-gradient(90deg, #232526 0%, #414345 100%);',
 
     white: '#FBFBFB',

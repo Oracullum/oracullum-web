@@ -1,17 +1,6 @@
 import styled, { css } from 'styled-components';
 import { lighten, shade } from 'polished';
 
-import { IconBaseProps } from 'react-icons';
-
-import {
-  FaThLarge as FaThLargeOriginal,
-  FaChartLine as FaChartLineOriginal,
-  FaAlignLeft as FaAlignLeftOriginal,
-  FaLayerGroup as FaLayerGroupOriginal,
-  FaBusinessTime as FaBusinessTimeOriginal,
-  FaUser as FaUserOriginal,
-} from 'react-icons/fa';
-
 export const Container = styled.div`
   display: flex;
 
@@ -125,54 +114,10 @@ export const AsideNavigationItem = styled.div<AsideNavigationItemProps>`
 
   span {
     color: ${props => props.active && props.theme.colors.primary};
+    font-size: 12px;
     font-weight: bold;
+    text-align: center;
   }
-`;
-
-interface IconProps extends IconBaseProps {
-  active: boolean;
-}
-
-export const FaThLarge = styled(FaThLargeOriginal).attrs({
-  size: 28,
-})<IconProps>`
-  color: ${props =>
-    props.active ? props.theme.colors.primary : props.theme.colors.black};
-`;
-
-export const FaUser = styled(FaUserOriginal).attrs({
-  size: 28,
-})<IconProps>`
-  color: ${props =>
-    props.active ? props.theme.colors.primary : props.theme.colors.black};
-`;
-
-export const FaChartLine = styled(FaChartLineOriginal).attrs({
-  size: 28,
-})<IconProps>`
-  color: ${props =>
-    props.active ? props.theme.colors.primary : props.theme.colors.black};
-`;
-
-export const FaAlignLeft = styled(FaAlignLeftOriginal).attrs({
-  size: 28,
-})<IconProps>`
-  color: ${props =>
-    props.active ? props.theme.colors.primary : props.theme.colors.black};
-`;
-
-export const FaLayerGroup = styled(FaLayerGroupOriginal).attrs({
-  size: 28,
-})<IconProps>`
-  color: ${props =>
-    props.active ? props.theme.colors.primary : props.theme.colors.black};
-`;
-
-export const FaBusinessTime = styled(FaBusinessTimeOriginal).attrs({
-  size: 28,
-})<IconProps>`
-  color: ${props =>
-    props.active ? props.theme.colors.primary : props.theme.colors.black};
 `;
 
 export const ContentWrapper = styled.div`

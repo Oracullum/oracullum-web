@@ -34,6 +34,7 @@ const Landing: React.FC = () => {
 
       <Hero>
         <Lottie
+          width={500}
           options={{
             loop: true,
             autoplay: true,
@@ -41,13 +42,11 @@ const Landing: React.FC = () => {
               title === 'light' ? animationDataLight : animationDataDark,
             rendererSettings: { preserveAspectRatio: 'xMidYMid slice' },
           }}
-          height={600}
-          width={600}
         />
       </Hero>
 
       <TotalConnections>
-        <strong>Uma rede com o total de 201 conexões já realizadas!</strong>
+        <strong>Crie sua conta agora e impulsione seus investimentos!</strong>
       </TotalConnections>
     </Container>
   );

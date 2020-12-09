@@ -1,31 +1,33 @@
 import React, { useState, useCallback, useContext } from 'react';
 import { ThemeContext } from 'styled-components';
+import {
+  FaThLarge,
+  FaChartLine,
+  FaBusinessTime,
+  FaUser,
+  FaAlignLeft,
+  FaLayerGroup,
+} from 'react-icons/fa';
+
+import oracullumLightImg from '../../../../assets/oracullum-light.svg';
+import oracullumDarkImg from '../../../../assets/oracullum-dark.svg';
 
 import Dashboard from '../../../Dashboard';
 import Exchanges from '../../../Exchanges';
 import Discover from '../../../Discover';
 import Reports from '../../../Reports';
-
-import oracullumLightImg from '../../../../assets/oracullum-light.svg';
-import oracullumDarkImg from '../../../../assets/oracullum-dark.svg';
+import Enterprises from '../../../Enterprises';
+import Profile from '../../../Profile';
 
 import {
   Container,
   AsideNavigationContainer,
   AsideNavigationItem,
-  FaThLarge,
-  FaChartLine,
-  FaAlignLeft,
-  FaLayerGroup,
   ContentWrapper,
-  FaBusinessTime,
-  FaUser,
 } from './styles';
-import Enterprises from '../../../Enterprises';
-import Profile from '../../../Profile';
 
 const LayoutNavigation: React.FC = () => {
-  const { title } = useContext(ThemeContext);
+  const { title, colors } = useContext(ThemeContext);
 
   const [dashboardActive, setDashboardActive] = useState(true);
   const [discoverActive, setDiscoverActive] = useState(false);
@@ -100,7 +102,10 @@ const LayoutNavigation: React.FC = () => {
           active={dashboardActive}
           onClick={handleDashboardActive}
         >
-          <FaThLarge active={dashboardActive} />
+          <FaThLarge
+            size={28}
+            color={dashboardActive ? colors.primary : colors.black}
+          />
 
           <div />
 
@@ -108,21 +113,13 @@ const LayoutNavigation: React.FC = () => {
         </AsideNavigationItem>
 
         <AsideNavigationItem
-          active={profileActive}
-          onClick={handleProfileActive}
-        >
-          <FaUser active={profileActive} />
-
-          <div />
-
-          <span>Perfíl</span>
-        </AsideNavigationItem>
-
-        <AsideNavigationItem
           active={discoverActive}
           onClick={handleDiscoverActive}
         >
-          <FaChartLine active={discoverActive} />
+          <FaChartLine
+            size={28}
+            color={discoverActive ? colors.primary : colors.black}
+          />
 
           <div />
 
@@ -130,35 +127,59 @@ const LayoutNavigation: React.FC = () => {
         </AsideNavigationItem>
 
         <AsideNavigationItem
-          active={actionActive}
-          onClick={handleActionsActive}
-        >
-          <FaAlignLeft active={actionActive} />
-
-          <div />
-
-          <span>Todas Ações</span>
-        </AsideNavigationItem>
-
-        <AsideNavigationItem active={reportActive} onClick={handleReportActive}>
-          <FaLayerGroup active={reportActive} />
-
-          <div />
-
-          <span>Relatórios</span>
-        </AsideNavigationItem>
-
-        <AsideNavigationItem
           active={enterpriseActive}
           onClick={handleEnterpriseActive}
         >
-          <FaBusinessTime active={enterpriseActive} />
+          <FaBusinessTime
+            size={28}
+            color={enterpriseActive ? colors.primary : colors.black}
+          />
 
           <div />
 
           <span>Empresas</span>
         </AsideNavigationItem>
+
+        <AsideNavigationItem
+          active={profileActive}
+          onClick={handleProfileActive}
+        >
+          <FaUser
+            size={28}
+            color={profileActive ? colors.primary : colors.black}
+          />
+
+          <div />
+
+          <span>Perfíl</span>
+        </AsideNavigationItem>
+
+        <AsideNavigationItem
+          active={actionActive}
+          onClick={handleActionsActive}
+        >
+          <FaAlignLeft
+            size={28}
+            color={actionActive ? colors.primary : colors.black}
+          />
+
+          <div />
+
+          <span>Minhas Ações</span>
+        </AsideNavigationItem>
+
+        <AsideNavigationItem active={reportActive} onClick={handleReportActive}>
+          <FaLayerGroup
+            size={28}
+            color={reportActive ? colors.primary : colors.black}
+          />
+
+          <div />
+
+          <span>Relatórios</span>
+        </AsideNavigationItem>
       </AsideNavigationContainer>
+
       <ContentWrapper>
         {dashboardActive && <Dashboard />}
         {profileActive && <Profile />}

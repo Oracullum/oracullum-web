@@ -3,13 +3,21 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+export const Header = styled.header`
+  width: 100%;
+
+  margin-bottom: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   > h1 {
-    margin-bottom: 64px;
-
     position: relative;
 
-    width: 185px;
+    width: 190px;
 
     &:after {
       content: '';
