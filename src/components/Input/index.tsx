@@ -17,6 +17,7 @@ import { Container, IconContainer, Error } from './styles';
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   icon?: React.ComponentType<IconBaseProps>;
+  type?: string;
   iconClick?: () => void;
 }
 
@@ -24,6 +25,7 @@ const Input: React.FC<InputProps> = ({
   name,
   icon: Icon,
   iconClick,
+  type,
   ...rest
 }) => {
   const { colors } = useContext(ThemeContext);
@@ -54,7 +56,12 @@ const Input: React.FC<InputProps> = ({
   }, [fieldName, registerField]);
 
   return (
-    <Container isErrored={!!error} isFocused={isFocused} isFilled={isFilled}>
+    <Container
+      isErrored={!!error}
+      isFocused={isFocused}
+      isFilled={isFilled}
+      type={type}
+    >
       {Icon && (
         <IconContainer onClick={iconClick}>
           <Icon size={20} />
@@ -67,6 +74,7 @@ const Input: React.FC<InputProps> = ({
         onBlur={handleInputBlur}
         defaultValue={defaultValue}
         ref={inputRef}
+        type={type}
         {...rest}
       />
 

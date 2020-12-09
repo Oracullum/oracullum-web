@@ -6,13 +6,31 @@ interface ContainerProps {
   isFocused: boolean;
   isFilled: boolean;
   isErrored: boolean;
+  type?: string;
 }
 
 export const Container = styled.div<ContainerProps>`
-  background: ${props =>
-    props.theme.title === 'light' ? props.theme.colors.white : 'transparent'};
+  ${props =>
+    props.type !== 'hidden' &&
+    css`
+      background: ${props.theme.title === 'light'
+        ? props.theme.colors.white
+        : 'transparent'};
+      border: 3px solid ${props.theme.colors.primaryLight};
+
+      &:hover {
+        box-shadow: inset 0 0 1em transparent,
+          0 0 0.4em ${props.theme.colors.primary};
+      }
+    `}
+
+  ${props =>
+    props.type === 'hidden' &&
+    css`
+      display: none !important;
+    `}
+
   border-radius: 12px;
-  border: 3px solid ${props => props.theme.colors.primaryLight};
   padding: 8px;
   width: 100%;
   color: ${props => props.theme.colors.grayLight};
@@ -25,11 +43,6 @@ export const Container = styled.div<ContainerProps>`
 
   & + div {
     margin-top: 32px;
-  }
-
-  &:hover {
-    box-shadow: inset 0 0 1em transparent,
-      0 0 0.4em ${props => props.theme.colors.primary};
   }
 
   ${props =>
