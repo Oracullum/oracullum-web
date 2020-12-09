@@ -53,7 +53,11 @@ const Discover: React.FC = () => {
           />
         </Card>
 
-        <Card title="Sugestões" width={80} />
+        <Card title="Sugestões" width={80}>
+          <div className="card-production">
+            <span>EM PRODUÇÃO</span>
+          </div>
+        </Card>
       </Tables>
     </Container>
   );
