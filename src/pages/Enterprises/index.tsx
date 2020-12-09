@@ -15,8 +15,6 @@ const Enterprises: React.FC = () => {
         <Navbar />
       </Header>
 
-      <span>aqui ficará os botões da modal</span>
-
       <Items>
         <AccordionEnterprise />
         <AccordionEnterprise />
