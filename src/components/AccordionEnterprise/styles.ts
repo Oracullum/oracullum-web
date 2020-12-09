@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { lighten, shade, darken } from 'polished';
 
 export const Container = styled.div`
-  max-width: 475px;
+  max-width: 655px;
 `;
 
 export const AccordionTitle = styled.div`
