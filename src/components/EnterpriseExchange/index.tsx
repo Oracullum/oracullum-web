@@ -37,6 +37,16 @@ const EnterpriseExchange: React.FC<EnterpriseExchangeProps> = ({ value }) => {
         <Divider />
 
         <Item>
+          <h3>Valor</h3>
+
+          <Input name="value" />
+        </Item>
+
+        <Divider />
+
+        <Item
+          style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
+        >
           <button type="submit" onClick={handleSubmit}>
             Comprar
           </button>
