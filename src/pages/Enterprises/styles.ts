@@ -35,7 +35,7 @@ export const Header = styled.header`
 
 export const Items = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(560px, 1fr));
   column-gap: 24px;
   row-gap: 36px;
 `;
