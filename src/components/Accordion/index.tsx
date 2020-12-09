@@ -1,5 +1,8 @@
 import React, { useState, useContext, useCallback, useRef } from 'react';
+
+import { toast } from 'react-toastify';
 import Ink from 'react-ink';
+import * as Yup from 'yup';
 
 import { ThemeContext } from 'styled-components';
 
@@ -7,6 +10,8 @@ import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { FormHandles } from '@unform/core';
 
 import { Form } from '@unform/web';
+import { useAuth } from '../../context/AuthContext';
+import api from '../../services/api';
 import {
   Container,
   Items,
@@ -21,49 +26,113 @@ import {
   Inputs,
 } from './styles';
 
-import Link from '../Link';
 import Input from '../Input';
 import HistoricTransactional from '../HistoricTransactional';
+import Button from '../Button';
+import getValidationErrors from '../../utils/getValidationErrors';
 
-const Accordion: React.FC = () => {
+interface HistoricTransactionalProps {
+  date: Date;
+  operation: string;
+  price: number;
+  quantity: number;
+}
+
+interface AccordionProps {
+  // code: string;
+  quantity: number;
+  name: string;
+  enterprise: string;
+  historics?: HistoricTransactionalProps[];
+  setExchanges: React.Dispatch<React.SetStateAction<never[]>>;
+  exchange_id: string;
+}
+
+const Accordion: React.FC<AccordionProps> = ({
+  // code,
+  quantity,
+  name,
+  enterprise,
+  historics,
+  setExchanges,
+  exchange_id,
+}) => {
   const { title, colors } = useContext(ThemeContext);
+  const { token } = useAuth();
 
   const formRef = useRef<FormHandles>(null);
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [isBuy, setIsBuy] = useState<boolean>(false);
+  const [isBuy, setIsBuy] = useState<boolean>(true);
 
   const handleSetTypeTransaction = useCallback(e => {
     const { value } = e.target;
     setIsBuy(value === 'buy');
   }, []);
 
-  const handleSubmit = useCallback((data: any) => {
-    console.log(data);
-    // data.operation = isBuy ? 'buy' : 'sell';
-  }, []);
+  const handleSubmit = useCallback(
+    async (data: any) => {
+      try {
+        const schema = Yup.object().shape({
+          date: Yup.string().required('Data obrigatório'),
+          quantity: Yup.number().required('Quantidade obrigatório!'),
+          price: Yup.number().required('Preço obrigatório'),
+        });
+        console.log(data);
+        await schema.validate(data, { abortEarly: false });
+
+        formRef.current?.setErrors({});
+
+        await api.post(
+          'historic-transactionals',
+          {
+            date: data.date,
+            quantity: data.quantity,
+            price: data.price,
+            operation: isBuy ? 'buy' : 'sell',
+            exchange_id: data.exchange_id,
+          },
+          { headers: { Authorization: `Bearer ${token}` } },
+        );
+
+        toast.success('Cadastro efetuado com sucesso!');
+      } catch (err) {
+        const errors = getValidationErrors(err);
+        console.log(err);
+
+        formRef.current?.setErrors(errors);
+
+        if (err instanceof Yup.ValidationError) {
+          toast.info('Por favor preencha todos os campos obrigatórios!');
+        } else {
+          toast.error('Ocorreu um erro no cadastro, tente novamente!');
+        }
+      }
+    },
+    [token, isBuy],
+  );
 
   return (
     <Container>
       <AccordionTitle onClick={() => setIsOpen(!isOpen)}>
         <Ink />
 
-        <span>ITUB4</span>
+        <span>{name}</span>
 
         <Items>
-          <Item>
+          {/* <Item>
             <label>Código</label>
-            <span>123456</span>
-          </Item>
+            <span>{code}</span>
+          </Item> */}
 
           <Item>
             <label>Empresa</label>
-            <span>Itaú</span>
+            <span>{enterprise}</span>
           </Item>
 
           <Item>
             <label>Ações</label>
-            <span>80 ações</span>
+            <span>{quantity} ações</span>
           </Item>
         </Items>
 
@@ -86,47 +155,15 @@ const Accordion: React.FC = () => {
 
       <AccordionContent isOpen={isOpen}>
         <HistoricTransactionals>
-          <HistoricTransactional
-            dateValue="05/09/2020"
-            operationValue="buy"
-            priceValue="39,90"
-            quantityValue="50"
-          />
-
-          <HistoricTransactional
-            dateValue="05/09/2020"
-            operationValue="sell"
-            priceValue="39,90"
-            quantityValue="20"
-          />
-
-          <HistoricTransactional
-            dateValue="05/09/2020"
-            operationValue="buy"
-            priceValue="39,90"
-            quantityValue="50"
-          />
-
-          <HistoricTransactional
-            dateValue="05/09/2020"
-            operationValue="buy"
-            priceValue="39,90"
-            quantityValue="50"
-          />
-
-          <HistoricTransactional
-            dateValue="05/09/2020"
-            operationValue="sell"
-            priceValue="39,90"
-            quantityValue="20"
-          />
-
-          <HistoricTransactional
-            dateValue="05/09/2020"
-            operationValue="buy"
-            priceValue="39,90"
-            quantityValue="50"
-          />
+          {historics?.map((item: any) => (
+            <HistoricTransactional
+              date={item.date}
+              operation={item.operation}
+              price={item.price}
+              quantity={item.quantity}
+              key={item.id}
+            />
+          ))}
         </HistoricTransactionals>
 
         <Transaction>
@@ -152,9 +189,9 @@ const Accordion: React.FC = () => {
                 </button>
               </Buttons>
 
-              <Link outline color={colors.primary} to="/#">
-                Comprar
-              </Link>
+              <Button outline color={colors.primary} type="submit">
+                Efetuar Transação
+              </Button>
             </ButtonGroup>
 
             <InputGroup>
@@ -172,6 +209,7 @@ const Accordion: React.FC = () => {
                 <label>Quantidade</label>
                 <Input name="quantity" />
               </Inputs>
+              <Input name="exchange_id" value={exchange_id} type="hidden" />
             </InputGroup>
           </Form>
         </Transaction>
