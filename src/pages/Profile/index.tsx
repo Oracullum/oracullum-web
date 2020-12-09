@@ -1,13 +1,17 @@
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useContext, useRef } from 'react';
 
 import Navbar from '../../components/Navbar';
+
+import { useAuth } from '../../context/AuthContext';
 
 import { Container, Header, BoxProfile, Item } from './styles';
 
 const Profile: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
+
+  const { user } = useAuth();
 
   const handleSubmit = useCallback((data: any) => {
     console.log(data);
@@ -24,12 +28,12 @@ const Profile: React.FC = () => {
         <Form ref={formRef} onSubmit={handleSubmit}>
           <Item>
             <label>Nome</label>
-            <input name="name" />
+            <input name="name" value={user.name} />
           </Item>
 
           <Item>
             <label>Email</label>
-            <input name="email" />
+            <input name="email" value={user.email} />
           </Item>
 
           <Item>
