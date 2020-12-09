@@ -4,13 +4,12 @@ import { shade, lighten, darken } from 'polished';
 export const Container = styled.div`
   form {
     display: flex;
-    justify-content: space-between;
     height: 100%;
     width: 100%;
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   background: ${props =>
@@ -92,7 +91,7 @@ export const Item = styled.div`
     border: 1px solid ${props => props.theme.colors.primary};
     background-color: ${props => lighten(0.05, props.theme.colors.background)};
     height: 22px;
-    width: 85px;
+    width: 120px;
     margin-top: 2px;
     border-radius: 8px;
 
@@ -105,6 +104,8 @@ export const Item = styled.div`
   button {
     background-color: ${props => props.theme.colors.primary};
     border-radius: 8px;
+
+    width: 100%;
 
     padding: 6px 10px;
 
