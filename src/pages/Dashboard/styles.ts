@@ -1,3 +1,4 @@
+import { lighten } from 'polished';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -42,5 +43,21 @@ export const Cards = styled.div`
 
   > div + div {
     margin-left: 80px;
+  }
+
+  .card-production {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+    span {
+      font-size: 3.6em;
+      color: ${props => lighten(0.05, props.theme.colors.primary)};
+      margin-top: -80px;
+    }
   }
 `;
