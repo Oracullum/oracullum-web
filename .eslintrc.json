@@ -50,7 +50,8 @@
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/explicit-module-boundary-types": 0,
     "no-console": "off",
-    "react/void-dom-elements-no-children": "off"
+    "react/void-dom-elements-no-children": "off",
+    "no-param-reassign": "off"
   },
   "settings": {
     "import/resolver": {
