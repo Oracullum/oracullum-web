@@ -1,13 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Accordion from '../../components/Accordion';
 // import { ThemeContext } from 'styled-components';
 
 import Navbar from '../../components/Navbar';
+import api from '../../services/api';
+
+import { useAuth } from '../../context/AuthContext';
 
 import { Container, Header, Items } from './styles';
 
 const Exchanges: React.FC = () => {
-  // const { colors } = useContext(ThemeContext);
+  const { token } = useAuth();
+
+  const [exchanges, setExchanges] = useState([]);
+
+  useEffect(() => {
+    async function loadExchanges() {
+      const response = await api.get('stocks', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setExchanges(response.data);
+    }
+    loadExchanges();
+  }, [token]);
 
   return (
     <Container>
@@ -18,10 +33,17 @@ const Exchanges: React.FC = () => {
       </Header>
 
       <Items>
-        <Accordion />
-        <Accordion />
-        <Accordion />
-        <Accordion />
+        {exchanges.map((item: any) => (
+          <Accordion
+            name={item.exchanges.exchange.name}
+            enterprise={item.exchanges.exchange.enterprise.name}
+            quantity={item.exchanges.quantity}
+            historics={item.exchanges.historic_transactional}
+            setExchanges={setExchanges}
+            exchange_id={item.exchanges.id}
+            key={item.id}
+          />
+        ))}
       </Items>
     </Container>
   );
