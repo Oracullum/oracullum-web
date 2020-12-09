@@ -1,48 +1,53 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import { format } from 'date-fns';
 
 import { Container, Item, Divider } from './styles';
 
 interface HistoricTransactionalProps {
-  dateValue: string;
-  operationValue: string;
-  quantityValue: string;
-  priceValue: string;
+  date: string;
+  operation: string;
+  quantity: string;
+  price: string;
 }
 
 const HistoricTransactional: React.FC<HistoricTransactionalProps> = ({
-  dateValue,
-  operationValue,
-  quantityValue,
-  priceValue,
+  date,
+  operation,
+  quantity,
+  price,
 }) => {
+  const parsedDate = useMemo(() => format(new Date(date), 'dd/MM/yyyy'), [
+    date,
+  ]);
+
   return (
-    <Container isOperationBuy={operationValue}>
+    <Container isOperationBuy={operation}>
       <div />
 
       <Item>
         <h3>Data</h3>
-        <p>{dateValue}</p>
+        <p>{parsedDate}</p>
       </Item>
 
       <Divider />
 
       <Item>
         <h3>Operação</h3>
-        <p>{operationValue}</p>
+        <p>{operation}</p>
       </Item>
 
       <Divider />
 
       <Item>
         <h3>Quantidade</h3>
-        <p>{quantityValue}</p>
+        <p>{quantity}</p>
       </Item>
 
       <Divider />
 
       <Item>
         <h3>Valor</h3>
-        <p>R$: {priceValue}</p>
+        <p>R$: {price}</p>
       </Item>
     </Container>
   );
