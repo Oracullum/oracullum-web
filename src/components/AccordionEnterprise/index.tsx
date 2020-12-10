@@ -24,7 +24,7 @@ const Accordion: React.FC = () => {
       <AccordionTitle onClick={() => setIsOpen(!isOpen)}>
         <Ink />
 
-        <span>Itaú</span>
+        <span>Nubank</span>
 
         <Items>
           <Item>
@@ -52,11 +52,9 @@ const Accordion: React.FC = () => {
 
       <AccordionContent isOpen={isOpen}>
         <Enterprises>
-          <EnterpriseExchange value="ITUB4" />
+          <EnterpriseExchange value="NU1" />
 
-          <EnterpriseExchange value="ITUB4" />
-
-          <EnterpriseExchange value="ITUB4" />
+          <EnterpriseExchange value="NU2" />
         </Enterprises>
       </AccordionContent>
     </Container>
