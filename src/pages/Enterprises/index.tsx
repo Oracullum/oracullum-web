@@ -17,10 +17,6 @@ const Enterprises: React.FC = () => {
 
       <Items>
         <AccordionEnterprise />
-        <AccordionEnterprise />
-        <AccordionEnterprise />
-        <AccordionEnterprise />
-        <AccordionEnterprise />
       </Items>
     </Container>
   );
